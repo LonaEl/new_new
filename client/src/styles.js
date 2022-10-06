@@ -1,31 +1,4 @@
-import createTheme  from "@mui/system/createTheme";
-const theme = createTheme ({
-  Container: {
-    breakpoints: {
-      sm: {
-        flexDirection: 'column-reverse',
-     } 
-  },
-},
-  AppBar: {
-    borderRadius: 15,
-    margin: '30px 0',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  heading: {
-    color: 'rgba(0,183,255, 1)',
-  },
-  image: {
-    marginLeft: '15px',
-  },
-});
-export default theme;
-
-/* import { makeStyles } from "@mui/styles";
-
+import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   [theme.breakpoints.down('sm')]: {
@@ -47,4 +20,4 @@ export default makeStyles((theme) => ({
   image: {
     marginLeft: '15px',
   },
-})); */
+}));

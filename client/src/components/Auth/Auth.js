@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Avatar, Button, Paper, Grid, Typography, Container } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
+import  Button from '@mui/material/Paper';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 import { Link, useNavigate } from 'react-router-dom';
 import ThemeProvider from '@mui/system/ThemeProvider';
 import LockOutlinedIcon  from '@mui/icons-material/LockOutlined'
@@ -43,43 +46,42 @@ const SignUp = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <ThemeProvider theme={theme} >
-      <Paper elevation={6}>
-        <Avatar >
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5"> { isSignup ? 'Sign up' : 'Sign in' }</Typography>
-        <form onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            { isSignup && (
-            <>
-              <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
-              <Input name="lastName" label="Last Name" handleChange={handleChange} half />
-            </>
-            )}
-            <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
-            <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
-            { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
-          </Grid>
-            {!isSignup && (
+    <Paper className={classes.paper} elevation={6}>
+      <Avatar className={classes.avatar}>
+        <LockOutlinedIcon />
+      </Avatar>
+      <Typography component="h1" variant="h5">{ isSignup ? 'Sign up' : 'Sign in' }</Typography>
+      <form className={classes.form} onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          { isSignup && (
+          <>
+            <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
+            <Input name="lastName" label="Last Name" handleChange={handleChange} half />
+          </>
+          )}
+          <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
+          <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
+          { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
+        </Grid>
+        {!isSignup && (
             <>
             <Link to="/forgot-password"> <p>Forgot Password?</p> </Link>
             </>
            )} 
-        <Button type="submit" fullWidth variant="contained" color="primary" >
-            { isSignup ? 'Sign Up' : 'Sign In' }
-          </Button>
-        <Grid container justifyContent="flex-end">
-            <Grid item>
-         <Button onClick={switchMode}>
-                { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
-              </Button>
-     </Grid>
+        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+          { isSignup ? 'Sign Up' : 'Sign In' }
+        </Button>
+    
+        <Grid container justify="flex-end">
+          <Grid item>
+            <Button onClick={switchMode}>
+              { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }
+            </Button>
           </Grid>
-        </form>
-      </Paper>
-      </ThemeProvider>
-    </Container>
+        </Grid>
+      </form>
+    </Paper>
+  </Container>
   );
 };
 

@@ -20,8 +20,8 @@ const Paginate = ({ page }) => {
   }, [dispatch, page]);
 
   return (
-    <ThemeProvider theme={theme} >
     <Pagination
+      classes={{ ul: classes.ul }}
       count={numberOfPages}
       page={Number(page) || 1}
       variant="outlined"
@@ -30,7 +30,6 @@ const Paginate = ({ page }) => {
         <PaginationItem {...item} component={Link} to={`/posts?page=${item.page}`} />
       )}
     />
-    </ThemeProvider>
   );
 };
 

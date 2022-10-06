@@ -1,9 +1,6 @@
 import React from 'react';
 import { Container } from '@mui/material'
 import { Routes, Route, Navigate } from 'react-router-dom';
-import ThemeProvider from '@mui/system/ThemeProvider';
-
-import theme from './styles'
 import PostDetails from './components/PostDetails/PostDetails';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
@@ -17,7 +14,7 @@ const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
 
   return (
-    <ThemeProvider theme={theme} >
+    
      <Container maxWidth="xl">
         <Navbar />
         <Routes>
@@ -30,10 +27,9 @@ const App = () => {
           <Route exact path="/auth" element={(!user ? <Auth /> : <Navigate to="/posts" />)} />
           <Route exact path="/claim" element={<Claim />} />
           <Route exact path="/termsandconditions" element={<Terms />} />
-    
-        </Routes>
+     </Routes>
       </Container>
-    </ThemeProvider>
+    
   );
 };
 

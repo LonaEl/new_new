@@ -1,18 +1,19 @@
 import React from 'react';
-import { Grid, CircularProgress } from '@mui/material';
+import { Grid, CircularProgress } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+
 import Post from './Post/Post';
-import ThemeProvider from '@mui/system/ThemeProvider';
-import theme from './styles';
+import useStyles from './styles';
 
 const Posts = ({ setCurrentId }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
-if (!posts.length && !isLoading) return 'No posts';
+  const classes = useStyles();
+
+  if (!posts.length && !isLoading) return 'No posts';
 
   return (
-    <ThemeProvider theme={theme}>
     isLoading ? <CircularProgress /> : (
-      <Grid container alignItems="stretch" spacing={3}>
+      <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {posts?.map((post) => (
           <Grid key={post._id} item xs={12} sm={12} md={6} lg={3}>
             <Post post={post} setCurrentId={setCurrentId} />
@@ -20,7 +21,6 @@ if (!posts.length && !isLoading) return 'No posts';
         ))}
       </Grid>
     )
-    </ThemeProvider>
   );
 };
 
