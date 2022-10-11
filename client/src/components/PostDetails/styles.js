@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+/* import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   media: {
@@ -22,10 +22,7 @@ export default makeStyles((theme) => ({
     flex: 1,
   },
   imageSection: {
-    marginLeft: '20px',
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: 0,
-    },
+   
   },
   recommendedPosts: {
     display: 'flex',
@@ -50,4 +47,4 @@ export default makeStyles((theme) => ({
     overflowY: 'auto',
     marginRight: '30px',
   },
-}));
+})); */

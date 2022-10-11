@@ -4,12 +4,13 @@ import Avatar from '@mui/material/Avatar';
 import  Button from '@mui/material/Paper';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Container  from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import { Link, useNavigate } from 'react-router-dom';
 import ThemeProvider from '@mui/system/ThemeProvider';
 import LockOutlinedIcon  from '@mui/icons-material/LockOutlined'
 import { signin, signup } from '../../actions/auth';
 
-import theme from './styles';
 
 import Input from './Input';
 
@@ -20,8 +21,6 @@ const SignUp = () => {
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  //const classes = useStyles();
 
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
@@ -46,12 +45,18 @@ const SignUp = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-    <Paper className={classes.paper} elevation={6}>
-      <Avatar className={classes.avatar}>
+    <Paper sx={{
+       marginTop: 8,
+       display: 'flex',
+       flexDirection: 'column',
+       alignItems: 'center',
+       padding: 2,
+    }} elevation={6}>
+      <Avatar backgroundColor="Magenta" m={1}>
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5">{ isSignup ? 'Sign up' : 'Sign in' }</Typography>
-      <form className={classes.form} onSubmit={handleSubmit}>
+      <form marginTop={3}  width= '100%' onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           { isSignup && (
           <>
@@ -68,7 +73,7 @@ const SignUp = () => {
             <Link to="/forgot-password"> <p>Forgot Password?</p> </Link>
             </>
            )} 
-        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+      <Button type="submit" fullWidth variant="contained" color="primary" m={3}>
           { isSignup ? 'Sign Up' : 'Sign In' }
         </Button>
     

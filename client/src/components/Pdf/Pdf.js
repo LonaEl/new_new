@@ -27,8 +27,8 @@ function Pdf() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div >
+      <header>
         <Document file={post.selectedFile} onLoadSuccess={onDocumentLoadSuccess}>
           <Page height="600" pageNumber={pageNumber} />
         </Document>

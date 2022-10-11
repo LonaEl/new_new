@@ -3,11 +3,20 @@ import { Paper, Typography, CircularProgress, Divider } from '@mui/material/';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import ThemeProvider from '@mui/system/ThemeProvider'
+import {styled} from '@mui/material/styles';
 import { getPost, getPostsBySearch } from '../../actions/posts';
 import CommentSection from './CommentSection';
 import Pdf from '../Pdf/Pdf';
-import theme from './styles';
+
+
+const Card = styled("div")(({ theme}) => ({
+  display: 'flex',
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      flexWrap: 'wrap',
+      flexDirection: 'column',
+    },
+}))
 
 const Post = () => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
@@ -30,7 +39,12 @@ const Post = () => {
   const openPost = (_id) => navigate(`/posts/${_id}`);
   if (isLoading) {
     return (
-      <Paper elevation={6} className={classes.loadingPaper}>
+      <Paper elevation={6} sx={{  display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 20,
+      borderRadius: 15,
+      height: 39, }}>
         <CircularProgress size="7em" />
       </Paper>
     );
@@ -39,8 +53,8 @@ const Post = () => {
 
   return (
     <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
-      <div className={classes.card}>
-        <div className={classes.section}>
+      <Card >
+        <div borderRadius="20px" margin="10px" flex="1px">
           <Typography variant="h3" component="h2">{post.title}</Typography>
           <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{post.tags.map((tag) => (
             <Link to={`/tags/${tag}`} style={{ textDecoration: 'none', color: '#3f51b5' }}>
@@ -62,11 +76,11 @@ const Post = () => {
           <CommentSection post={post} />
           <Divider style={{ margin: '20px 0' }} />
         </div>
-        <div className={classes.imageSection}>
+     {/*    <Box >
           <img className={classes.media} src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
-        </div>
-      </div>
-      {!!recommendedPosts.length && (
+        </Box> */}
+      </Card>
+   {/*    {!!recommendedPosts.length && (
         <div className={classes.section}>
           <Typography gutterBottom variant="h5">You might also like:</Typography>
           <Divider />
@@ -82,9 +96,9 @@ const Post = () => {
             ))}
           </div>
         </div>
-      )}
+      )} */}
     </Paper>
   );
 };
 
-export default Post;
+export default Post; 
